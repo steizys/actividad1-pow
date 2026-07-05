@@ -1,0 +1,255 @@
+/* ==========================================================================
+   1. RESETEO Y CONFIGURACIÓN PREMIUM
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 20px;
+    
+    /* Fondo base blanco/claro satinado */
+    background-color: #f8fafc;
+    
+    /* Simulación de las "auras" de color difuminadas de la imagen de referencia */
+    background-image: 
+        radial-gradient(circle at 10% 90%, rgba(56, 189, 248, 0.25) 0%, transparent 45%),  /* Aura Azul Celeste abajo izq */
+        radial-gradient(circle at 90% 85%, rgba(129, 140, 248, 0.25) 0%, transparent 50%), /* Aura Indigo abajo der */
+        radial-gradient(circle at 50% 95%, rgba(253, 224, 71, 0.2) 0%, transparent 40%),  /* Aura Amarilla tenue centro abajo */
+        radial-gradient(circle at 85% 15%, rgba(244, 63, 94, 0.05) 0%, transparent 35%);   /* Aura Rosa ultra tenue arriba der */
+    
+    background-attachment: fixed;
+}
+
+.contenedor-juego {
+    width: 100%;
+    max-width: 840px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* ==========================================================================
+   2. HEADER Y MARCADOR ELECTRÓNICO
+   ========================================================================== */
+header {
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 850;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+}
+
+.marcador {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 16px 28px;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 
+                0 10px 10px -5px rgba(15, 23, 42, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.marcador p {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#puntuacion {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #0f172a;
+    margin-left: 6px;
+    font-variant-numeric: tabular-nums; /* Evita que los números bailen al cambiar */
+}
+
+/* BOTÓN REINICIAR (EFECTO GLOW) */
+button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.45);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   3. SECCIÓN PRINCIPAL Y CONTROLES LATERALES
+   ========================================================================== */
+.seccion-principal {
+    display: flex;
+    flex-direction: row; 
+    align-items: flex-start;
+    justify-content: center;
+    gap: 35px;
+    width: 100%;
+}
+
+.area-controles {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 35px; 
+    width: 160px;
+    padding-top: 10px;
+}
+
+.contenedor-mazo, .contenedor-descartes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedor-mazo h3, .contenedor-descartes h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+}
+
+/* BARRA DE DESCARTE (ZONAS DROP ASIGNADAS) */
+.descartes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 5px;
+    height: auto;
+    align-items: center;
+}
+
+.btn-descarte {
+    width: 105px;
+    height: 85px;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-descarte:hover {
+    transform: scale(1.06) translateY(-2px);
+    box-shadow: 0 12px 20px rgba(15, 23, 42, 0.15);
+}
+
+/* ==========================================================================
+   4. TABLERO NEUMÓRFICO (LADO DERECHO)
+   ========================================================================== */
+.tablero {
+    display: flex;
+    gap: 18px;
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+    padding: 20px;
+    border-radius: 24px;
+    height: 565px;
+    box-shadow: inset 0 4px 12px rgba(15, 23, 42, 0.15),
+                0 20px 40px -15px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.columna {
+    width: 112px;
+    background-color: rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    position: relative; 
+    cursor: pointer;
+    overflow: hidden; 
+    border: 1px dashed rgba(15, 23, 42, 0.15);
+    transition: all 0.2s ease;
+}
+
+.columna:hover {
+    background-color: rgba(15, 23, 42, 0.14);
+    border-color: rgba(15, 23, 42, 0.3);
+}
+
+/* DESPLAZAMIENTO DINÁMICO DE CARTAS */
+.columna .carta {
+    position: absolute;
+    left: 5.5px;
+    box-shadow: 0 8px 16px -4px rgba(15, 23, 42, 0.4),
+                0 4px 6px -2px rgba(15, 23, 42, 0.3); 
+    transition: top 0.25s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* ==========================================================================
+   5. DISEÑO DE CARTAS Y MAZO EN 3D
+   ========================================================================== */
+.carta {
+    width: 99px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    transition: transform 0.2s ease;
+}
+
+.mazo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    padding-left: 50px; /* Equilibrio del margen negativo lateral */
+    height: 150px;
+    width: 100%;
+}
+
+/* Efecto de profundidad para la pila del mazo */
+.carta-futura {
+    z-index: 1;
+    transform: scale(0.88) translateY(2px);
+    opacity: 0.65;
+    filter: blur(0.5px) brightness(0.9);
+}
+
+.carta-actual {
+    z-index: 2;
+    margin-left: -65px; 
+    transform: rotate(-2deg); /* Inclinación de 2 grados para simular una mano real */
+    box-shadow: -8px 8px 20px rgba(15, 23, 42, 0.35),
+                -2px 2px 6px rgba(15, 23, 42, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}

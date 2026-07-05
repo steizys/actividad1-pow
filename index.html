@@ -2,49 +2,44 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Solitario 2048 - Modo Claro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solitario 2048</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col items-center py-10 font-sans">
-    
-    <header class="mb-10 text-center">
-        <h1 class="text-4xl font-extrabold text-slate-800 mb-2">Solitario 2048</h1>
-        <div class="text-xl font-bold bg-white px-6 py-2 rounded-full border border-slate-200 shadow-sm">
-            Puntos: <span id="score" class="text-blue-600">0</span>
-        </div>
-    </header>
+<body>
+    <div class="contenedor-juego">
+        <header>
+            <h1>Solitario 2048</h1>
+            <div class="marcador">
+                <p>Puntuación: <span id="puntuacion">0</span></p>
+                <button id="btn-reiniciar">Reiniciar Juego</button>
+            </div>
+        </header>
 
-    <div class="flex flex-row items-start gap-12 w-full max-w-4xl px-4">
-        
-        <div class="flex flex-col items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-lg">
-            <span class="text-xs uppercase tracking-widest text-slate-500 font-bold">Mazo</span>
-            <div id="next-card-display" class="w-24 h-36 bg-slate-100 rounded-xl flex items-center justify-center border border-slate-200"></div>
-        </div>
+        <div class="seccion-principal">
+            <div class="area-controles">
+                <div class="contenedor-mazo">
+                    <h3>Mazo:</h3>
+                    <div id="mazo" class="mazo"></div>
+                </div>
+                
+                <div class="contenedor-descartes">
+                    <h3>Descartes:</h3>
+                    <div class="descartes">
+                        <img src="cartas/cartaDescarte0.png" class="btn-descarte" alt="Descarte 1">
+                        <img src="cartas/cartaDescarte0.png" class="btn-descarte" alt="Descarte 2">
+                    </div>
+                </div>
+            </div>
 
-        <div class="flex gap-8 w-full h-[500px] bg-white p-6 rounded-2xl border border-slate-200 shadow-inner">
-            <div id="col-0" class="flex-1 flex flex-col-reverse items-center gap-3 cursor-pointer group" onclick="dropCard(0)">
-                <div class="text-slate-300 group-hover:text-blue-500 transition-colors animate-bounce">▲</div>
-                <div class="w-full h-full flex flex-col-reverse gap-2"></div>
-            </div>
-            <div id="col-1" class="flex-1 flex flex-col-reverse items-center gap-3 cursor-pointer group" onclick="dropCard(1)">
-                <div class="text-slate-300 group-hover:text-blue-500 transition-colors animate-bounce">▲</div>
-                <div class="w-full h-full flex flex-col-reverse gap-2"></div>
-            </div>
-            <div id="col-2" class="flex-1 flex flex-col-reverse items-center gap-3 cursor-pointer group" onclick="dropCard(2)">
-                <div class="text-slate-300 group-hover:text-blue-500 transition-colors animate-bounce">▲</div>
-                <div class="w-full h-full flex flex-col-reverse gap-2"></div>
-            </div>
-            <div id="col-3" class="flex-1 flex flex-col-reverse items-center gap-3 cursor-pointer group" onclick="dropCard(3)">
-                <div class="text-slate-300 group-hover:text-blue-500 transition-colors animate-bounce">▲</div>
-                <div class="w-full h-full flex flex-col-reverse gap-2"></div>
+            <div class="tablero" id="tablero">
+                <div class="columna" data-columna="0"></div>
+                <div class="columna" data-columna="1"></div>
+                <div class="columna" data-columna="2"></div>
+                <div class="columna" data-columna="3"></div>
             </div>
         </div>
     </div>
-
-    <button onclick="location.reload()" class="mt-10 bg-slate-800 text-white hover:bg-slate-900 px-8 py-3 rounded-xl font-bold transition-all shadow-md">
-        Reiniciar Juego
-    </button>
-
     <script src="script.js"></script>
 </body>
 </html>
